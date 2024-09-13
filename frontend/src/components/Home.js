@@ -42,8 +42,8 @@ function Home(){
         setAllTodos(res.data)
         doc.text("hihi", 10, 10)
         allTodos.map((elem, i) =>{
-            var thisline = "Hi"
-            doc.text("Hi", xcoord, ycoord)
+            var thisline = elem.title + ": " + elem.description
+            doc.text(thisline, xcoord, ycoord)
             ycoord = ycoord + 10
     })
         doc.save("Trythis.pdf")
@@ -92,11 +92,13 @@ function Home(){
             <input type='text' name='description' value={data.description} placeholder="Enter description" onChange={handleChange}/> 
             
             <br/>
+            <br/>
 
-            <button type="button" onClick={handleSubmit}> Hello!</button> <br/>
-            <button className = "btn btn-primary" onClick={fetchTodo}> Fetch </button> <br/>
-            <button onClick={handleUpdate}> Update </button> <br/>
-            <button onClick={generate}> Generate PDF </button> <br/>
+            <button className = "btn btn-primary" onClick={handleSubmit}> Hello!</button> &nbsp; &nbsp;
+            <button className = "btn btn-primary" onClick={fetchTodo}> Fetch </button> &nbsp; &nbsp;
+            <button className = "btn btn-primary" onClick={handleUpdate}> Update </button> &nbsp; &nbsp;
+            <button className = "btn btn-primary" onClick={generate}> Generate PDF </button> &nbsp; &nbsp;
+            <br/>
             <div>
                 {allTodos.map((elem, i) =>(
                     <div key={i} onClick={() => handleValues(elem)}>
